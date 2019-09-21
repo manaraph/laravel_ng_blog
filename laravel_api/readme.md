@@ -70,3 +70,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Resources 
+- [Fix for SQLSTATE[42000]: 1071 Specified key was too long; max key length is 767 bytes](https://laravel-news.com/laravel-5-4-key-too-long-error)

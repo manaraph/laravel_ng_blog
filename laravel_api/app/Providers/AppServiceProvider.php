@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use Larvel\Passport\Passport;
 use Illuminate\Support\ServiceProvider;
+// use Illuminate\Foundation\Support\Providers\AppServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
+    protected $policies = [
+        'App\Model'=> 'App\Policies\ModelPolicy',
+    ];
+
     /**
      * Bootstrap any application services.
      *
@@ -23,6 +31,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Schema::defaultStringLength(191);   //Fix for SQLSTATE[42000]: 1071 Specified key was too long; max key length is 767 bytes
+
+        $this->registerPolicies();
+
+        Passport::routes();
     }
 }
