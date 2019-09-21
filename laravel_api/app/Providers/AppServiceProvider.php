@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use Larvel\Passport\Passport;
-use Illuminate\Support\ServiceProvider;
-// use Illuminate\Foundation\Support\Providers\AppServiceProvider as ServiceProvider;
+use Laravel\Passport\Passport;
+// use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Schema;
 

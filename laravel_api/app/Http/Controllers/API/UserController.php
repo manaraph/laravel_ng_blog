@@ -7,6 +7,8 @@ use App\User;
 use Illuminate\Support\Facades\Auth; 
 use Validator;
 
+// Previous Implementation
+
 class UserController extends Controller {
 
   public $successStatus = 200;
