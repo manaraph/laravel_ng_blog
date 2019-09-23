@@ -20,7 +20,7 @@ class AuthController extends Controller
     {
        return response()->json(['m4'=>'its working'], 200);
     }
-    
+
     /**
      * login api
      * 
@@ -32,7 +32,7 @@ class AuthController extends Controller
         {
             $user = Auth::user();
             $success['token'] = $user->createToken('myApp')->accessToken;
-            return response()->json(['success' => $success], 200);
+            return response()->json(['success' => $success, 'message'=> 'Access granted'], 200);
         } else {
             return response()->json(['error' => 'Unauthorised'], 401);
         }
@@ -45,6 +45,8 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
+        response()->json(['mdk'=> 'lsllsl'], 200);
+
         $validator = Validator::make(
             $request->all(), 
             [
@@ -57,13 +59,13 @@ class AuthController extends Controller
 
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()], 401);
+        }
             $input = $request->all();
             $input['password'] = bcrypt($input['password']);
             $user = User::create($input);
             $success['token'] = $user->createToken('myApp')->accessToken;
             $success['name'] = $user->name;
-            return response()->json(['success'=>$success], 200);
-        }
+            return response()->json(['success'=>$success, 'message'=> 'User created successfully'], 200);
+        
     }
 }
-// WlFqRTDyYjFQzqwSRc1825iktg1nVLMl5ROlmTb9
