@@ -19,9 +19,9 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
-    login(username: string, password: string) {
+    login(email: string, password: string) {
         const body = {
-            email: username,
+            email,
             password
         };
         const options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};

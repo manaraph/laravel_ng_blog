@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
       this.loginForm = this.formBuilder.group({
-          username: ['', Validators.required],
+          email: ['', Validators.required],
           password: ['', Validators.required]
       });
 
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
       }
 
       this.loading = true;
-      await this.authenticationService.login(this.form.username.value, this.form.password.value)
+      await this.authenticationService.login(this.form.email.value, this.form.password.value)
           .pipe(first())
           .subscribe(
             data => {
