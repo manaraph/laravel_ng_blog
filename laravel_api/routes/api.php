@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 // Route::post('register', 'API\UserController@register');
 // Route::post('login', 'AuthController@login');
 
-Route::get('login', array('middleware' => 'cors', 'uses' => 'AuthController@login'));
+Route::post('login', array('middleware' => 'cors', 'uses' => 'AuthController@login'));
 Route::post('register', 'AuthController@register');
 Route::get('users', array('middleware' => 'cors', 'uses' => 'AuthController@users'));
 
