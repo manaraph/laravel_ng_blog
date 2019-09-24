@@ -37,14 +37,14 @@ export class AuthenticationService {
             }));
     }
 
-    test() {
+    // test() {
 
-        return this.http.get<any>('/api/users')
-            .pipe(map(user => {
-                console.log(user);
-                return user;
-            }));
-    }
+    //     return this.http.get<any>('/api/users')
+    //         .pipe(map(user => {
+    //             console.log(user);
+    //             return user;
+    //         }));
+    // }
 
     logout() {
         // remove user from local storage to log user out
