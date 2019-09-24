@@ -8,7 +8,6 @@ import { RegisterComponent } from './register/register.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostDetailsComponent } from './posts/post-details/post-details.component';
 import { NavComponent } from './nav/nav.component';
-import { AlertComponent } from './_components/alert/alert.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -20,7 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
     PostsComponent,
     PostDetailsComponent,
     NavComponent,
-    AlertComponent
   ],
   imports: [
     BrowserModule,
