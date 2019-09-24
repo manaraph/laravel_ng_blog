@@ -25,27 +25,21 @@ export class AuthenticationService {
             email: username,
             password
         };
-        console.log('login auth');
         const options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
-        // return this.http.post<any>(`${environment.apiUrl}/api/login`, { username, password })
-        // return this.http.post<any>(`/api/login`, { username, password }, options)
         return this.http.post<any>(`/api/login`, body, options)
             .pipe(map(user => {
-                console.log(user);
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.currentUserSubject.next(user);
                 }
-
                 return user;
             }));
     }
 
     test() {
-        console.log('test api');
-        // return this.http.get<any>(`${environment.apiUrl}/api/users`)
+
         return this.http.get<any>(`/api/users`)
             .pipe(map(user => {
                 console.log(user);

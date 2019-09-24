@@ -36,42 +36,30 @@ export class LoginComponent implements OnInit {
       });
 
       // get return url from route parameters or default to '/'
-      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+      this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
+  get form() { return this.loginForm.controls; }
 
   async onSubmit() {
       this.submitted = true;
-      console.log('Submitted');
+
       // stop here if form is invalid
       if (this.loginForm.invalid) {
           return;
       }
 
-	// this.loading = true;
-	await this.authenticationService.test()
-	.pipe(first())
-	.subscribe(
-		data => {
-			console.log(data);
-					},
-		error => {
-			console.log(error);
-		});
-
-      await this.authenticationService.login(this.f.username.value, this.f.password.value)
+      this.loading = true;
+      await this.authenticationService.login(this.form.username.value, this.form.password.value)
           .pipe(first())
           .subscribe(
-              data => {
-				  console.log(data);
-                  this.router.navigate([this.returnUrl]);
+            data => {
+                this.router.navigate([this.returnUrl]);
               },
               error => {
-				  console.log(error);
-                  this.alertService.error(error);
-                  this.loading = false;
+                this.alertService.error(error);
+                this.loading = false;
               });
   }
 }
