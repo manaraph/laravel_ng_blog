@@ -4,7 +4,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { User } from '../_models/user';
-import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -26,7 +25,7 @@ export class AuthenticationService {
             password
         };
         const options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
-        return this.http.post<any>(`/api/login`, body, options)
+        return this.http.post<any>('/api/login', body, options)
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
@@ -40,7 +39,7 @@ export class AuthenticationService {
 
     test() {
 
-        return this.http.get<any>(`/api/users`)
+        return this.http.get<any>('/api/users')
             .pipe(map(user => {
                 console.log(user);
                 return user;
