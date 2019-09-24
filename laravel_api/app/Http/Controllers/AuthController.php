@@ -50,10 +50,10 @@ class AuthController extends Controller
         $validator = Validator::make(
             $request->all(), 
             [
-                'name'=>'required', 
+                'fullName'=>'required', 
                 'email'=>'required|email', 
                 'password'=>'required', 
-                'confirm_password'=>'required|same:password'
+                'confirmPassword'=>'required|same:password'
             ]
         );
 
@@ -64,7 +64,7 @@ class AuthController extends Controller
             $input['password'] = bcrypt($input['password']);
             $user = User::create($input);
             $success['token'] = $user->createToken('myApp')->accessToken;
-            $success['name'] = $user->name;
+            $success['fullName'] = $user->fullName;
             return response()->json(['success'=>$success, 'message'=> 'User created successfully'], 200);
         
     }
