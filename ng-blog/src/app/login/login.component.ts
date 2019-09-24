@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
+  message = '';
 
   constructor(
       private formBuilder: FormBuilder,
@@ -43,23 +44,27 @@ export class LoginComponent implements OnInit {
   get form() { return this.loginForm.controls; }
 
   async onSubmit() {
-      this.submitted = true;
+    console.log('submitted');
+    this.submitted = true;
 
-      // stop here if form is invalid
-      if (this.loginForm.invalid) {
-          return;
-      }
+    // stop here if form is invalid
+    if (this.loginForm.invalid) {
+        return;
+    }
 
-      this.loading = true;
-      await this.authenticationService.login(this.form.email.value, this.form.password.value)
-          .pipe(first())
-          .subscribe(
-            data => {
-                this.router.navigate([this.returnUrl]);
-              },
-              error => {
-                this.alertService.error(error);
-                this.loading = false;
-              });
+    this.loading = true;
+    await this.authenticationService.login(this.form.email.value, this.form.password.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.message = data.message;
+          console.log(data);
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          this.message = 'User not found';
+          this.alertService.error(error);
+          this.loading = false;
+        });
   }
 }

@@ -27,8 +27,9 @@ export class AuthenticationService {
         const options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
         return this.http.post<any>('/api/login', body, options)
             .pipe(map(user => {
+                console.log(user);
                 // login successful if there's a jwt token in the response
-                if (user && user.token) {
+                if (user && user.success) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.currentUserSubject.next(user);

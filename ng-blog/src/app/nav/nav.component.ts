@@ -1,4 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { User } from '../_models/user';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../_services';
 // import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -8,8 +11,11 @@ import { Component, OnInit, HostListener } from '@angular/core';
 })
 export class NavComponent implements OnInit {
   // faSearch = faSearch;
+  currentUser: User;
 
-  constructor() { }
+  constructor(private router: Router, private authenticationService: AuthenticationService) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
 
   ngOnInit() {
   }
@@ -24,5 +30,10 @@ export class NavComponent implements OnInit {
     } else {
       nav.classList.remove('header-scrolled');
     }
+  }
+
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
   }
 }
