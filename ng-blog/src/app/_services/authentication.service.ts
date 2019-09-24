@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -21,8 +21,15 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
+        const body = {
+            email: username,
+            password
+        };
         console.log('login auth');
-        return this.http.post<any>(`${environment.apiUrl}/login`, { username, password })
+        const options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
+        // return this.http.post<any>(`${environment.apiUrl}/api/login`, { username, password })
+        // return this.http.post<any>(`/api/login`, { username, password }, options)
+        return this.http.post<any>(`/api/login`, body, options)
             .pipe(map(user => {
                 console.log(user);
                 // login successful if there's a jwt token in the response
@@ -38,7 +45,8 @@ export class AuthenticationService {
 
     test() {
         console.log('test api');
-        return this.http.get<any>(`${environment.apiUrl}/user`)
+        // return this.http.get<any>(`${environment.apiUrl}/api/users`)
+        return this.http.get<any>(`/api/users`)
             .pipe(map(user => {
                 console.log(user);
                 return user;

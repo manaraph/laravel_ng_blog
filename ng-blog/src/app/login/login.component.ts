@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
-  onSubmit() {
+  async onSubmit() {
       this.submitted = true;
       console.log('Submitted');
       // stop here if form is invalid
@@ -50,17 +50,28 @@ export class LoginComponent implements OnInit {
           return;
       }
 
-	     this.loading = true;
-	     this.authenticationService.test();
-    //   this.authenticationService.login(this.f.username.value, this.f.password.value)
-    //       .pipe(first())
-    //       .subscribe(
-    //           data => {
-    //               this.router.navigate([this.returnUrl]);
-    //           },
-    //           error => {
-    //               this.alertService.error(error);
-    //               this.loading = false;
-    //           });
+	// this.loading = true;
+	await this.authenticationService.test()
+	.pipe(first())
+	.subscribe(
+		data => {
+			console.log(data);
+					},
+		error => {
+			console.log(error);
+		});
+
+      await this.authenticationService.login(this.f.username.value, this.f.password.value)
+          .pipe(first())
+          .subscribe(
+              data => {
+				  console.log(data);
+                  this.router.navigate([this.returnUrl]);
+              },
+              error => {
+				  console.log(error);
+                  this.alertService.error(error);
+                  this.loading = false;
+              });
   }
 }
