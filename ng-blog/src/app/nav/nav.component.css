@@ -1,0 +1,32 @@
+nav a {
+  text-decoration: none;
+}
+
+#rightNav {
+  float: right;
+}
+
+#searchImg {
+  border-radius:5px;
+}
+
+.header-scrolled {
+  background: #fff;
+  height: 70px;
+  padding: 15px 0;
+  transition: all 0.5s;
+  border-bottom: 0.5px solid #eee;
+}
+
+@media screen and (min-width: 767px) {
+  a {
+    font-weight: 700;
+  }
+  .navbar-custom a {
+    color: rgb(0, 66, 137);
+  }
+
+  .active a {
+    color: rgb(0, 123, 255);
+  }
+}
