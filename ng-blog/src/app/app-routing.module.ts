@@ -9,9 +9,9 @@ import { PostDetailsComponent } from './posts/post-details/post-details.componen
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'post', component: PostsComponent },
-  { path: 'post/:id', component: PostDetailsComponent },
-  { path: '', redirectTo: '/post', pathMatch: 'full' }
+  { path: 'posts', component: PostsComponent },
+  { path: 'posts/:id', component: PostDetailsComponent },
+  { path: '', redirectTo: '/posts', pathMatch: 'full' }
 ];
 
 @NgModule({
