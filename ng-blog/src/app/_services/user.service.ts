@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '../_models/user';
 
@@ -16,7 +16,9 @@ export class UserService {
     // }
 
     register(user: User) {
-        return this.http.post('/api/register', user);
+				console.log(user);
+    const options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    return this.http.post<any>('/api/register', user, options);
     }
 
     // update(user: User) {
