@@ -36,6 +36,15 @@ export class AuthenticationService {
             }));
     }
 
+    test() {
+        console.log('test api');
+        return this.http.get<any>(`${environment.apiUrl}/user`)
+            .pipe(map(user => {
+                console.log(user);
+                return user;
+            }));
+    }
+
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
