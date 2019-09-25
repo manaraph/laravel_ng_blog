@@ -2,25 +2,21 @@ export interface IEvent {
   id: number;
   name: string;
   // date: Date;
-  date: String;
+  date: string;
   time: string;
   price: number;
   imageUrl: string;
-  location?: {
-    address: string,
-    city: string,
-    country: string
-  };
+  location?: string;
   onlineUrl?: string;
-  sessions: ISession[];
+  // sessions: ISession[];
 }
 
-export interface ISession {
-  id: number;
-  name: string;
-  presenter: string;
-  duration: number;
-  level: string;
-  abstract: string;
-  voters: string[];
-}
+// export interface ISession {
+//   id: number;
+//   name: string;
+//   presenter: string;
+//   duration: number;
+//   level: string;
+//   abstract: string;
+//   voters: string[];
+// }
