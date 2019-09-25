@@ -11,6 +11,7 @@ import { NavComponent } from './nav/nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PostThumbnailComponent } from './posts/post-thumbnail/post-thumbnail.component';
+import { CreatePostComponent } from './posts/create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { PostThumbnailComponent } from './posts/post-thumbnail/post-thumbnail.co
     PostDetailsComponent,
     NavComponent,
     PostThumbnailComponent,
+    CreatePostComponent,
   ],
   imports: [
     BrowserModule,
