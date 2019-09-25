@@ -1,0 +1,22 @@
+#myButton { 
+  margin: 10px auto; 
+}
+.green { 
+  color: #003300 !important; 
+}
+.bold { 
+  font-weight: bold; 
+}
+.thumbnail { 
+  /* min-height: 350px; */
+  background-color: #fafafa;
+}
+.pad-left { 
+  margin-left: 10px; 
+}
+.well div { 
+  color: #444; 
+}
+.heading {
+  color: #d9531e;
+}

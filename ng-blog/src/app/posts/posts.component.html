@@ -1,1 +1,9 @@
-<p>posts works!</p>
+<div class="container mt-5 pt-5">
+  <h2>Upcoming Angular events</h2>
+  <hr/>
+  <div class="row">
+    <div *ngFor="let event of events" class="col-md-4">
+      <app-post-thumbnail [event]="event"></app-post-thumbnail>
+    </div>
+  </div>
+</div>
