@@ -2,6 +2,11 @@ nav a {
   text-decoration: none;
 }
 
+#nav {
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  /* margin-bottom: 5em; */
+}
+
 #rightNav {
   float: right;
 }
