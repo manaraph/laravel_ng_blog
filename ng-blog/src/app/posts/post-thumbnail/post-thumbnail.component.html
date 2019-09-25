@@ -1,23 +1,23 @@
 <div class="my-3">
-  <div [routerLink]="['/events', event.id]" class="well hoverwell thumbnail p-3 rounded">
-    <h3 class="text-center my-3 heading">{{event.name | uppercase}}</h3>
+  <div [routerLink]="['/posts', post.id]" class="well hoverwell thumbnail p-3 rounded">
+    <h3 class="text-center my-3 heading">{{post.name | uppercase}}</h3>
     <div class="details mt-5 mb-3">
-      <div>Date: {{event?.date | date: 'shortDate'}}</div>
-      <div [ngStyle]="getStartTimeStyle()" [ngSwitch]="event?.time">
-        Time: {{event?.time}}
+      <div>Date: {{post?.date | date: 'shortDate'}}</div>
+      <div [ngSwitch]="post?.time">
+        Time: {{post?.time}}
         <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
         <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
         <span *ngSwitchDefault>(Normal Start)</span>
       </div>
-      <div>Price: {{event?.price | currency: 'EUR'}}</div>
-      <div *ngIf="event?.location">
-        <span>Location: {{event?.location?.address}}</span>
-        <span class="pad-left">{{event?.location?.city}}, {{event?.location?.country}}</span>
+      <div>Price: {{post?.price | currency: 'EUR'}}</div>
+      <div *ngIf="post?.location">
+        <span>Location: {{post?.location?.address}}</span>
+        <span class="pad-left">{{post?.location?.city}}, {{post?.location?.country}}</span>
       </div>
-      <div [hidden]="!event?.onlineUrl">Online Url: {{ event?.onlineUrl}} </div>
+      <div [hidden]="!post?.onlineUrl">Online Url: {{ post?.onlineUrl}} </div>
     </div>
     <div class="mx-auto my-3">
-      <button type="submit" class="btn btn-primary" (click)="handleClick(event.name)" >See more...</button>
+      <button type="submit" class="btn btn-primary" [routerLink]="['/posts', post.id]" >See more...</button>
     </div>
   </div>
 </div>

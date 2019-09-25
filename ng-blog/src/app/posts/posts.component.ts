@@ -7,12 +7,12 @@ import { IEvent } from '../_models/post';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
-  events: IEvent[];
+  posts: IEvent[];
 
   constructor() { }
 
   ngOnInit() {
-    this.events = [
+    this.posts = [
       {
         id: 1,
         name: 'Angular Connect',
