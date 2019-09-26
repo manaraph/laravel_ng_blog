@@ -13,7 +13,8 @@ export class CreatePostComponent {
 
   constructor(private router: Router, private postService: PostService) {}
 
-  saveEvent(formValues) {
+  savePost(formValues) {
+    // this.postService.savePost(formValues);
     this.postService.savePost(formValues).subscribe(() => {
       this.isDirty = false;
       this.router.navigate(['./posts']);

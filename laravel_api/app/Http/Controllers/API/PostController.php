@@ -36,7 +36,7 @@ class PostController extends BaseController
       'date' => 'required', 
       'time' => 'required', 
       'price' => 'required', 
-      'image_url' => 'required|string', 
+      // 'image_url' => 'nullable|string', 
       'location' => 'nullable|string', 
       'online_url' => 'nullable|string'
     ]);
@@ -83,7 +83,7 @@ class PostController extends BaseController
       'date' => 'required', 
       'time' => 'required', 
       'price' => 'required', 
-      'image_url' => 'required|string', 
+      // 'image_url' => 'nullable|string', 
       'location' => 'nullable|string', 
       'online_url' => 'nullable|string'
     ]);
@@ -96,7 +96,7 @@ class PostController extends BaseController
     $post->date = $input['date'];
     $post->time = $input['time'];
     $post->price = $input['price']; 
-    $post->image_url = $input['image_url']; 
+    // $post->image_url = $input['image_url']; 
     $post->location = $input['location'];
     $post->online_url = $input['online_url'];    
     $post->save();

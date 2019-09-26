@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('date');
             $table->string('time');
             $table->integer('price');
-            $table->string('image_url');
+            // $table->string('image_url')->nullable();
             $table->string('location')->nullable();
             $table->string('online_url')->nullable();
             $table->timestamps();

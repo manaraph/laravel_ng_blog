@@ -10,10 +10,10 @@ import { IEvent } from '../_models/post';
 export class PostService {
 
   constructor(private http: HttpClient) { }
-    getPosts() {
+    getPosts(): Observable<any> {
       return this.http.get<any>('/api/posts')
         .pipe(map(response => {
-          return response.data;
+          return response;
         }));
     }
 
@@ -23,7 +23,8 @@ export class PostService {
     }
 
     savePost(post) {
-      const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+      console.log(post);
+      const options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
 
       return this.http.post<IEvent>('/api/posts', post, options)
         .pipe(catchError(this.handleError<IEvent>('savePost')));

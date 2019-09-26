@@ -16,7 +16,7 @@ class Post extends Model
         'date', 
         'time', 
         'price', 
-        'image_url', 
+        // 'image_url', 
         'location', 
         'online_url'
     ];
