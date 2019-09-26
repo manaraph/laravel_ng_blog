@@ -1,6 +1,6 @@
 <div class="my-3">
   <div [routerLink]="['/posts', post.id]" class="well hoverwell thumbnail p-3 rounded">
-    <h3 class="text-center my-3 heading">{{post.name | uppercase}}</h3>
+    <h3 class="text-center my-3 heading">{{post.post_name | uppercase}}</h3>
     <div class="details mt-5 mb-3">
       <div>Date: {{post?.date | date: 'shortDate'}}</div>
       <div [ngSwitch]="post?.time">
@@ -11,10 +11,9 @@
       </div>
       <div>Price: {{post?.price | currency: 'EUR'}}</div>
       <div *ngIf="post?.location">
-        <span>Location: {{post?.location?.address}}</span>
-        <span class="pad-left">{{post?.location?.city}}, {{post?.location?.country}}</span>
+        <span>Location: {{post?.location}}</span>
       </div>
-      <div [hidden]="!post?.onlineUrl">Online Url: {{ post?.onlineUrl}} </div>
+      <div [hidden]="!post?.online_url">Online Url: {{ post?.online_url}} </div>
     </div>
     <div class="mx-auto my-3">
       <button type="submit" class="btn btn-primary" [routerLink]="['/posts', post.id]" >See more...</button>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IEvent } from '../_models/post';
 import { PostService } from '../_services/post.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-posts',
@@ -11,12 +10,10 @@ import { ActivatedRoute } from '@angular/router';
 export class PostsComponent implements OnInit {
   posts: IEvent[];
 
-  constructor(private postService: PostService, private route: ActivatedRoute) { }
+  constructor(private postService: PostService) { }
 
   ngOnInit() {
-    // this.posts = this.route.snapshot.data.event;
-    this.getPosts();
-    console.log(this.posts);
+    this.postService.getPosts().subscribe(posts => this.posts = posts);
 
   //   this.posts = [
   //     {
@@ -65,11 +62,5 @@ export class PostsComponent implements OnInit {
   //       location: 'The Excalibur Las Vegas USA',
   //     }
   //   ];
-  }
-
-  async getPosts() {
-    await this.postService.getPosts().subscribe(posts => this.posts = posts);
-    console.log(this.posts);
-    return this.posts;
   }
 }
