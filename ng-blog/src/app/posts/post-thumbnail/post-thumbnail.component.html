@@ -1,5 +1,5 @@
 <div class="my-3">
-  <div [routerLink]="['/posts', post.id]" class="well hoverwell thumbnail p-3 rounded">
+  <div class="well hoverwell thumbnail p-3 rounded">
     <h3 class="text-center my-3 heading">{{post.post_name | uppercase}}</h3>
     <div class="details mt-5 mb-3">
       <div>Date: {{post?.date | date: 'shortDate'}}</div>
@@ -13,10 +13,12 @@
       <div *ngIf="post?.location">
         <span>Location: {{post?.location}}</span>
       </div>
-      <div [hidden]="!post?.online_url">Online Url: {{ post?.online_url}} </div>
+      <div [hidden]="!post?.online_url">Online Url: <a href="{{ post?.online_url}}" target="_blank" rel="noopener noreferrer">{{ post?.online_url}}</a> </div>
     </div>
-    <div class="mx-auto my-3">
-      <button type="submit" class="btn btn-primary" [routerLink]="['/posts', post.id]" >See more...</button>
+    <div class="mx-auto my-3 text-center">
+      <button type="submit" class="btn btn-info mx-1" [routerLink]="['/posts', post.id]" >Details</button>
+      <button type="submit" class="btn btn-primary mx-1" (click)="edit(post.id)" >Edit</button>
+      <button type="submit" class="btn btn-warning mx-1" (click)="delete(post.id)" >Delete</button>
     </div>
   </div>
 </div>

@@ -30,6 +30,12 @@ export class PostService {
         .pipe(catchError(this.handleError<IEvent>('savePost')));
     }
 
+    deletePost(post) {
+      console.log(post);
+      return this.http.delete<any>(`/api/posts/${post}`)
+        .pipe(catchError(this.handleError<any>('deletePost')));
+    }
+
     private handleError<T>(operation = 'operation', result?: T) {
       return (error: any): Observable<T> => {
         console.error(error);

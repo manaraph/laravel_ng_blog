@@ -1,3 +1,6 @@
+button {
+  min-width: 5em;
+}
 #myButton { 
   margin: 10px auto; 
 }
