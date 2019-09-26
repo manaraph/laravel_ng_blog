@@ -43,7 +43,6 @@ export class LoginComponent implements OnInit {
   get form() { return this.loginForm.controls; }
 
   async onSubmit() {
-    console.log('submitted');
     this.submitted = true;
 
     // stop here if form is invalid
@@ -57,7 +56,6 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           this.message = data.message;
-          console.log(data);
           this.router.navigate([this.returnUrl]);
         },
         error => {
