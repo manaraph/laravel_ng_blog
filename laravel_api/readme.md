@@ -76,3 +76,4 @@ The Laravel framework is open-source software licensed under the [MIT license](h
 - [Fix for SQLSTATE[42000]: 1071 Specified key was too long; max key length is 767 bytes](https://laravel-news.com/laravel-5-4-key-too-long-error)
 - [Laravel Passport, Create REST API With Authentication](https://dev.to/abdoumjr/laravel-passport-create-rest-api-with-authentication-5enk)
 - [Allow CORS in Laravel](https://medium.com/@petehouston/allow-cors-in-laravel-2b574c51d0c1)
+- [Build RESTful API In Laravel 5.8 Example](https://itsolutionstuff.com/post/build-restful-api-in-laravel-58-exampleexample.html)

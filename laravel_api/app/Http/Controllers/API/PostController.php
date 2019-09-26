@@ -32,13 +32,13 @@ class PostController extends BaseController
     $input = $request->all();
 
     $validator = Validator::make($input, [
-      'post_name' => 'required', 
+      'post_name' => 'required',
       'date' => 'required', 
       'time' => 'required', 
       'price' => 'required', 
-      'image_url' => 'required', 
-      'location' => 'required', 
-      'online_url' => 'required'
+      'image_url' => 'required|string', 
+      'location' => 'nullable|string', 
+      'online_url' => 'nullable|string'
     ]);
 
     if($validator->fails()){

@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 // Route::post('register', 'API\UserController@register');
 // Route::post('login', 'AuthController@login');
 
+// Auth API
 Route::post('login', array('middleware' => 'cors', 'uses' => 'AuthController@login'));
 Route::post('register', 'AuthController@register');
 Route::get('users', array('middleware' => 'cors', 'uses' => 'AuthController@users'));
@@ -25,6 +26,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:api')->group( function () {
-	Route::resource('posts', 'API\PostController');
-});
+
+// Post API
+Route::get('posts', 'API\PostController@index');
+Route::get('posts/{id}', 'API\PostController@show');
+Route::post('posts', 'API\PostController@store');
+Route::put('posts/{id}', 'API\PostController@update');
+Route::delete('posts/{id}', 'API\PostController@delete');
+
+// Route::middleware('auth:api')->group( function () {
+// 	Route::resource('posts', 'PostController');
+// });
