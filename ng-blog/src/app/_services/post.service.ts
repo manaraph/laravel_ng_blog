@@ -17,9 +17,11 @@ export class PostService {
         }));
     }
 
-    getPost(id: number): Observable<IEvent> {
-      return this.http.get<IEvent>(`/api/posts/${id}`)
-        .pipe(catchError(this.handleError<IEvent>('getPost')));
+    getPost(id: number): Observable<any> {
+      return this.http.get<any>(`/api/posts/${id}`)
+        .pipe(map(response => {
+          return response.data;
+        }));
     }
 
     savePost(post) {

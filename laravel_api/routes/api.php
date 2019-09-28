@@ -32,7 +32,7 @@ Route::get('posts', 'API\PostController@index');
 Route::get('posts/{id}', 'API\PostController@show');
 Route::post('posts', 'API\PostController@store');
 Route::put('posts/{id}', 'API\PostController@update');
-Route::delete('posts/{id}', 'API\PostController@delete');
+Route::delete('posts/{id}', 'API\PostController@destroy');
 
 // Route::middleware('auth:api')->group( function () {
 // 	Route::resource('posts', 'PostController');

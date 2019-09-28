@@ -4,6 +4,9 @@ button {
 #myButton { 
   margin: 10px auto; 
 }
+.post {
+  cursor: pointer;
+}
 .green { 
   color: #003300 !important; 
 }

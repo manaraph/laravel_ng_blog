@@ -110,7 +110,7 @@ class PostController extends BaseController
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function delete(Post $post)
+  public function destroy(Post $post)
   {
     $post->delete();
 

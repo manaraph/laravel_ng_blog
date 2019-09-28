@@ -1,19 +1,21 @@
 <div class="my-3">
   <div class="well hoverwell thumbnail p-3 rounded">
-    <h3 class="text-center my-3 heading">{{post.post_name | uppercase}}</h3>
-    <div class="details mt-5 mb-3">
-      <div>Date: {{post?.date | date: 'shortDate'}}</div>
-      <div [ngSwitch]="post?.time">
-        Time: {{post?.time}}
-        <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
-        <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
-        <span *ngSwitchDefault>(Normal Start)</span>
+    <div [routerLink]="['/posts', post.id]" class="post">
+      <h3 class="text-center my-3 heading">{{post.post_name | uppercase}}</h3>
+      <div class="details mt-5 mb-3">
+        <div>Date: {{post?.date | date: 'shortDate'}}</div>
+        <div [ngSwitch]="post?.time">
+          Time: {{post?.time}}
+          <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
+          <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
+          <span *ngSwitchDefault>(Normal Start)</span>
+        </div>
+        <div>Price: {{post?.price | currency: 'EUR'}}</div>
+        <div *ngIf="post?.location">
+          <span>Location: {{post?.location}}</span>
+        </div>
+        <div [hidden]="!post?.online_url">Online Url: <a href="{{ post?.online_url}}" target="_blank" rel="noopener noreferrer">{{ post?.online_url}}</a> </div>
       </div>
-      <div>Price: {{post?.price | currency: 'EUR'}}</div>
-      <div *ngIf="post?.location">
-        <span>Location: {{post?.location}}</span>
-      </div>
-      <div [hidden]="!post?.online_url">Online Url: <a href="{{ post?.online_url}}" target="_blank" rel="noopener noreferrer">{{ post?.online_url}}</a> </div>
     </div>
     <div class="mx-auto my-3 text-center">
       <button type="submit" class="btn btn-info mx-1" [routerLink]="['/posts', post.id]" >Details</button>
