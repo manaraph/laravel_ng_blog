@@ -34,8 +34,12 @@ export class PostService {
 
     deletePost(post) {
       console.log(post);
-      return this.http.delete<any>(`/api/posts/${post}`)
-        .pipe(catchError(this.handleError<any>('deletePost')));
+      const options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
+
+      return this.http.delete<any>(`/api/posts/${post}`, options)
+        .pipe(map(response => {
+          return response;
+        }));
     }
 
     private handleError<T>(operation = 'operation', result?: T) {
