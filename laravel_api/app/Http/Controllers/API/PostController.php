@@ -74,7 +74,7 @@ class PostController extends BaseController
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, Post $post)
+  public function update(Request $request, $id)
   {
     $input = $request->all();
 
@@ -83,7 +83,6 @@ class PostController extends BaseController
       'date' => 'required', 
       'time' => 'required', 
       'price' => 'required', 
-      // 'image_url' => 'nullable|string', 
       'location' => 'nullable|string', 
       'online_url' => 'nullable|string'
     ]);
@@ -92,13 +91,16 @@ class PostController extends BaseController
         return $this->sendError('Validation Error.', $validator->errors());       
     }
 
-    $post->post_name = $input['post_name'];
-    $post->date = $input['date'];
-    $post->time = $input['time'];
-    $post->price = $input['price']; 
-    // $post->image_url = $input['image_url']; 
-    $post->location = $input['location'];
-    $post->online_url = $input['online_url'];    
+    $post = Post::find($id);
+    // $post->title = $request->post_name;
+
+    $post->post_name = $request['post_name'];
+    $post->date = $request['date'];
+    $post->time = $request['time'];
+    $post->price = $request['price']; 
+    // $post->image_url = $request['image_url']; 
+    $post->location = $request['location'];
+    $post->online_url = $request['online_url'];    
     $post->save();
 
     return $this->sendResponse($post->toArray(), 'Post updated successfully.');
