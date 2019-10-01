@@ -17,7 +17,7 @@ export class PostThumbnailComponent implements OnInit {
   }
 
   delete(post) {
-    this.postService.deletePost(post);
+    this.postService.deletePost(post).subscribe();
     this.router.navigate(['./posts']);
   }
 
